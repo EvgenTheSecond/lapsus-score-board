@@ -1,0 +1,86 @@
+{
+  "title": "Lapsus — Two-player scoreboard",
+  "description": "A two-player Lapsus scoreboard. Keep score, switch roles, and make every minute count.",
+  "skip": "Skip to scoreboard",
+  "brand": "lapsus",
+  "brandLabel": "Lapsus scoreboard",
+  "brandTileOne": "la",
+  "brandTileTwo": "p",
+  "edition": "A game for two",
+  "languageLabel": "Interface language",
+  "eyebrow": "WORDS GET WEIRD. KEEP SCORE.",
+  "introTitle": "Your next great guess.",
+  "introCopy": "Two players, a little imagination, and one minute on the clock.",
+  "round": "Round",
+  "timerHeading": "The word clock",
+  "secondsBadge": "60 SEC",
+  "timerLabel": "Round time remaining",
+  "resetTimer": "Reset timer",
+  "timerFootnote": "One minute to build. All the time you need to guess.",
+  "playersHeading": "At the table",
+  "renameHint": "Tap a name to make it yours",
+  "playerOneLabel": "PLAYER ONE",
+  "playerTwoLabel": "PLAYER TWO",
+  "pointsLabel": "POINTS",
+  "scoreCorrectQuestion": "Correct guess?",
+  "scoreCorrect": "Add 1 to the Translator.",
+  "scoreIncorrect": "Wrong guess? No points this round.",
+  "nextRound": "Next round",
+  "nextRoundHint": "Switch roles & reset the clock",
+  "rulesSummary": "A quick rules refresher",
+  "ruleBuildTitle": "Build a word",
+  "ruleBuildBody": "The Speaker gets 8 syllable cards and a secret topic. Start the minute and build a word without speaking. Overlap and rearrange cards as you like.",
+  "ruleGuessTitle": "Make a guess",
+  "ruleGuessBody": "When time is up, stop building. Mix the secret topic with 2 other topic cards. The Translator chooses from all 3, with no time limit.",
+  "ruleScoreTitle": "Score & switch",
+  "ruleScoreBody": "A correct guess earns the Translator 1 point. Otherwise, no points. Switch roles each round. Agree on an even number of rounds; settle ties with extra rounds in pairs.",
+  "rulesSourcePrefix": "Based on your",
+  "rulesSourceLink": "two-player house rules (in English)",
+  "footerTagline": "A few words. A lot of meaning.",
+  "footerNote": "Made for your side of the table.",
+  "defaultPlayer": "Player {number}",
+  "scoreLabel": "Score for {name}",
+  "minusLabel": "Remove one point from {name}",
+  "plusLabel": "Add one point to {name}",
+  "speaker": "Speaker",
+  "translator": "Translator",
+  "speakerHint": "Build the word. Score locked this round.",
+  "translatorHint": "Find the topic. Edit your score.",
+  "buildingHint": "{speaker} builds a word. No spoken hints!",
+  "guessingHint": "{translator}, choose from the 3 topic cards. There is no time limit.",
+  "pointForms": {
+    "one": "point",
+    "other": "points"
+  },
+  "phases": {
+    "ready": [
+      "READY TO PLAY",
+      "Ready when you are.",
+      "Start timer"
+    ],
+    "running": [
+      "BUILD YOUR WORD",
+      "Let the syllables do the talking.",
+      "Pause timer"
+    ],
+    "paused": [
+      "TAKE A BREATHER",
+      "Timer paused.",
+      "Resume timer"
+    ],
+    "finished": [
+      "TIME TO GUESS",
+      "Time’s up! Stop building.",
+      "Start again"
+    ]
+  },
+  "announcements": {
+    "score": "{name}: {score} {points}.",
+    "finished": "Time is up. Stop building the word. {translator} can now choose a topic, with no time limit.",
+    "paused": "Round timer paused.",
+    "resumed": "Round timer resumed.",
+    "started": "The one-minute timer has started. {speaker} is the Speaker.",
+    "reset": "Timer reset to one minute. Scores have not changed.",
+    "nextRound": "Round {round}. {speaker} is the Speaker. {translator} is the Translator. Timer reset; scores are unchanged."
+  }
+}

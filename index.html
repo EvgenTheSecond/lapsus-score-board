@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5235b8">
+  <meta name="description" content="A two-player Lapsus scoreboard. Keep score, switch roles, and make every minute count.">
+  <title>Lapsus — Two-player scoreboard</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to scoreboard</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#main" aria-label="Lapsus scoreboard" data-i18n-label="brandLabel">
+        <span class="brand-mark" aria-hidden="true"><span data-i18n="brandTileOne">la</span><span data-i18n="brandTileTwo">p</span></span>
+        <span><span data-i18n="brand">lapsus</span><span class="brand-dot">.</span></span>
+      </a>
+      <div class="header-tools">
+        <span class="edition" data-i18n="edition">A game for two</span>
+        <div class="language-switch" role="group" aria-label="Interface language" data-i18n-label="languageLabel">
+          <button id="language-en" type="button" lang="en" aria-label="English" aria-pressed="true" disabled>EN</button>
+          <button id="language-ru" type="button" lang="ru" aria-label="Русский" aria-pressed="false" disabled>РУ</button>
+          <button id="language-uk" type="button" lang="uk" aria-label="Українська" aria-pressed="false" disabled>УК</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" aria-busy="true">
+      <p id="startup-status" role="status">Loading scoreboard…</p>
+      <p id="startup-error" class="noscript-note" role="alert" hidden></p>
+      <div class="intro">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">WORDS GET WEIRD. KEEP SCORE.</p>
+          <h1 data-i18n="introTitle">Your next great guess.</h1>
+          <p class="intro-copy" data-i18n="introCopy">Two players, a little imagination, and one minute on the clock.</p>
+        </div>
+        <p class="round-badge"><span class="round-label" data-i18n="round">Round</span> <span id="round-number">01</span></p>
+      </div>
+
+      <div class="game-layout">
+        <section class="timer-card" aria-labelledby="timer-heading">
+          <div class="timer-topline"><h2 id="timer-heading" data-i18n="timerHeading">The word clock</h2><span class="minute-badge" data-i18n="secondsBadge">60 SEC</span></div>
+          <div class="timer-dial">
+            <svg class="timer-ring" viewBox="0 0 240 240" aria-hidden="true">
+              <circle class="timer-track" cx="120" cy="120" r="110"></circle>
+              <circle id="timer-progress" class="timer-progress" cx="120" cy="120" r="110" pathLength="1"></circle>
+            </svg>
+            <div class="timer-readout">
+              <div id="timer-display" role="timer" aria-label="Round time remaining" aria-live="off" data-i18n-label="timerLabel">01:00</div>
+              <span id="timer-phase">READY TO PLAY</span>
+            </div>
+          </div>
+          <div class="timer-message">
+            <p id="timer-status">Ready when you are.</p>
+            <p id="timer-hint"><span id="speaker-name">Player 1</span> builds a word. No spoken hints!</p>
+          </div>
+          <div class="timer-actions">
+            <button id="timer-start" class="button button-start" type="button" disabled><span class="start-symbol" aria-hidden="true">▶</span><span id="timer-start-label">Start timer</span></button>
+            <button id="timer-reset" class="button button-reset" type="button" data-i18n="resetTimer" disabled>Reset timer</button>
+          </div>
+          <p class="timer-footnote" data-i18n="timerFootnote">One minute to build. All the time you need to guess.</p>
+        </section>
+
+        <section class="players-section" aria-labelledby="players-heading">
+          <div class="section-heading"><h2 id="players-heading" data-i18n="playersHeading">At the table</h2><span data-i18n="renameHint">Tap a name to make it yours</span></div>
+          <div class="player-list">
+            <article class="player-card player-one" aria-label="Player 1">
+              <div class="player-identity">
+                <span class="player-avatar" aria-hidden="true">01</span>
+                <div class="player-name-group">
+                  <label class="eyebrow" for="player-1-name" data-i18n="playerOneLabel">PLAYER ONE</label>
+                  <input id="player-1-name" class="player-name" type="text" value="Player 1" maxlength="32" autocomplete="off" spellcheck="false" disabled>
+                </div>
+              </div>
+              <div class="role-row"><span id="player-1-role" class="role-badge role-speaker">Speaker</span><p id="player-1-role-hint">Build the word. Score locked this round.</p></div>
+              <div class="score-row">
+                <label class="score-label" for="player-1-score" data-i18n="pointsLabel">POINTS</label>
+                <div class="score-stepper">
+                  <button id="player-1-minus" class="score-button" type="button" aria-label="Remove one point from Player 1" disabled>−</button>
+                  <input id="player-1-score" class="score-input" type="number" min="0" max="9007199254740991" step="1" value="0" inputmode="numeric" aria-label="Score for Player 1" aria-describedby="player-1-role-hint" readonly disabled>
+                  <button id="player-1-plus" class="score-button score-plus" type="button" aria-label="Add one point to Player 1" disabled>+</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="player-card player-two" aria-label="Player 2">
+              <div class="player-identity">
+                <span class="player-avatar" aria-hidden="true">02</span>
+                <div class="player-name-group">
+                  <label class="eyebrow" for="player-2-name" data-i18n="playerTwoLabel">PLAYER TWO</label>
+                  <input id="player-2-name" class="player-name" type="text" value="Player 2" maxlength="32" autocomplete="off" spellcheck="false" disabled>
+                </div>
+              </div>
+              <div class="role-row"><span id="player-2-role" class="role-badge role-translator">Translator</span><p id="player-2-role-hint">Find the topic. Edit your score.</p></div>
+              <div class="score-row">
+                <label class="score-label" for="player-2-score" data-i18n="pointsLabel">POINTS</label>
+                <div class="score-stepper">
+                  <button id="player-2-minus" class="score-button" type="button" aria-label="Remove one point from Player 2" disabled>−</button>
+                  <input id="player-2-score" class="score-input" type="number" min="0" max="9007199254740991" step="1" value="0" inputmode="numeric" aria-label="Score for Player 2" aria-describedby="player-2-role-hint" disabled>
+                  <button id="player-2-plus" class="score-button score-plus" type="button" aria-label="Add one point to Player 2" disabled>+</button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="scoring-note"><span class="note-icon" aria-hidden="true">+</span><span><span data-i18n="scoreCorrectQuestion">Correct guess?</span> <strong data-i18n="scoreCorrect">Add 1 to the Translator.</strong><br><span data-i18n="scoreIncorrect">Wrong guess? No points this round.</span></span></p>
+          <button id="next-round" class="button button-next" type="button" disabled><span data-i18n="nextRound">Next round</span><span class="next-round-hint" data-i18n="nextRoundHint">Switch roles &amp; reset the clock</span></button>
+        </section>
+      </div>
+
+      <details class="rules">
+        <summary><span data-i18n="rulesSummary">A quick rules refresher</span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <div class="rules-content">
+          <div><h3 data-i18n="ruleBuildTitle">Build a word</h3><p data-i18n="ruleBuildBody">The Speaker gets 8 syllable cards and a secret topic. Start the minute and build a word without speaking. Overlap and rearrange cards as you like.</p></div>
+          <div><h3 data-i18n="ruleGuessTitle">Make a guess</h3><p data-i18n="ruleGuessBody">When time is up, stop building. Mix the secret topic with 2 other topic cards. The Translator chooses from all 3, with no time limit.</p></div>
+          <div><h3 data-i18n="ruleScoreTitle">Score &amp; switch</h3><p data-i18n="ruleScoreBody">A correct guess earns the Translator 1 point. Otherwise, no points. Switch roles each round. Agree on an even number of rounds; settle ties with extra rounds in pairs.</p></div>
+          <p class="rules-source"><span data-i18n="rulesSourcePrefix">Based on your</span> <a href="lapsus-two-player-rules.md" hreflang="en" data-i18n="rulesSourceLink">two-player house rules (in English)</a>.</p>
+        </div>
+      </details>
+    </main>
+
+    <footer class="site-footer"><span data-i18n="footerTagline">A few words. A lot of meaning.</span><span data-i18n="footerNote">Made for your side of the table.</span></footer>
+  </div>
+  <p id="game-status" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="noscript-note">Enable JavaScript to edit scores, run the round timer, and switch languages.</p></noscript>
+</body>
+</html>
